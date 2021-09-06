@@ -56,7 +56,7 @@ public class SourceLearn {
 
     private static void readFromCollection() throws Exception {
         StreamExecutionEnvironment executionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment();
-        DataStreamSource<Object> dataStreamSource = executionEnvironment.fromCollection(Arrays.asList(
+        DataStreamSource<SensorReading> dataStreamSource = executionEnvironment.fromCollection(Arrays.asList(
                 new SensorReading(1, 1L, 31.6),
                 new SensorReading(2, 2L, 32.6),
                 new SensorReading(3, 3L, 33.6),
