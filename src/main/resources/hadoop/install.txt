@@ -1,0 +1,47 @@
+#安装homebrew
+
+#安装jdk
+
+#配置ssh local
+
+#拷贝配置文件
+mkdir -p ~/data/hadoop/dfs/name
+mkdir -p ~/module/data/hadoop/data
+cp ./*.xml ~/module/hadoop/etc/hadoop
+
+#将所有组件的环境变量加到.zshrc
+
+#启动hadoop
+##HADOOP_HOME
+export HADOOP_HOME=/Users/sghl/module/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin
+
+hdfs namenode -format
+start-all.sh
+mapred --daemon start historyserver
+stop-all.sh
+mapred --daemon stop historyserver
+
+#zk
+##ZOOKEEPER_HOME
+export ZOOKEEPER_HOME=/Users/sghl/module/zookeeper
+export PATH=$PATH:$ZOOKEEPER_HOME/bin
+
+zkServer.sh start
+
+#kafka
+#KAFKA_HOME
+export KAFKA_HOME=/Users/sghl/module/kafka
+export PATH=$PATH:$KAFKA_HOME/bin
+
+kafka-server-start.sh ~/module/kafka/config/server.properties
+kafka-server-stop.sh stop
+
+# 消费者
+
+
+#flume ==> 花时间看看flume
+export FLUME_HOME=/Users/sghl/module/flume
+export PATH=$PATH:$FLUME_HOME/bin
+
